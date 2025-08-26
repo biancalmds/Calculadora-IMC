@@ -18,6 +18,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.googlefonts.GoogleFont
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.googlefonts.Font
 import com.example.calculadoraimc.ui.theme.CalculadoraIMCTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,6 +38,21 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+val provider = GoogleFont.Provider(
+    providerAuthority = "com.google.android.gms.fonts",
+    providerPackage = "com.google.android.gms",
+    certificates = R.array.com_google_android_gms_fonts_certs
+)
+
+val poppins = GoogleFont("Poppins")
+
+val fontFamily = FontFamily(
+    androidx.compose.ui.text.googlefonts.Font(
+        googleFont = poppins,
+        fontProvider = provider
+    )
+)
 
 @Composable
 fun CalculadoraIMCScreen() {
@@ -58,6 +76,7 @@ fun CalculadoraIMCScreen() {
                 text = "Calculadora de IMC",
                 fontSize = 25.sp,
                 fontWeight = FontWeight.Bold,
+                fontFamily = fontFamily,
                 modifier = Modifier.padding(bottom = 32.dp)
             )
             OutlinedTextField(
@@ -100,6 +119,7 @@ fun CalculadoraIMCScreen() {
                 Text(
                     text = "Calcular IMC",
                     fontWeight = FontWeight.Bold,
+                    fontFamily = fontFamily,
                     fontSize = 18.sp,
                     modifier = Modifier.padding(10.dp)
                 )
