@@ -138,7 +138,8 @@ fun CalculadoraIMCScreen() {
                     fontWeight = FontWeight.Bold,
                     fontFamily = fontFamily,
                     fontSize = 18.sp,
-                    modifier = Modifier.padding(10.dp)
+                    modifier = Modifier.padding(10.dp),
+                    color = Color(0xFFFAFAFC)
                 )
 
             }
