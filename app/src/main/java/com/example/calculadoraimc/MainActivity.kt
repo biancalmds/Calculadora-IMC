@@ -13,6 +13,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.googlefonts.Font
+import androidx.compose.ui.text.style.TextAlign
 import com.example.calculadoraimc.ui.theme.CalculadoraIMCTheme
 
 class MainActivity : ComponentActivity() {
@@ -63,7 +65,7 @@ fun CalculadoraIMCScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF3FFEB))
+            .background(Brush.verticalGradient(listOf(Color(0xFFD7D5D5), Color(0xDC63834C))))
     ) {
         Column(
             modifier = Modifier
@@ -77,14 +79,22 @@ fun CalculadoraIMCScreen() {
                 fontSize = 25.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = fontFamily,
-                modifier = Modifier.padding(bottom = 32.dp)
+                modifier = Modifier.padding(bottom = 32.dp),
+                color = Color(0xFF445E30)
             )
             OutlinedTextField(
-                value = peso,
+               value = peso,
                 onValueChange = { peso = it },
                 label = { Text("Peso (kg)") },
                 leadingIcon = { Icon(Icons.Default.MonitorWeight, contentDescription = null) },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    unfocusedLabelColor = Color(0xFF333030),
+                    focusedLabelColor = Color(0xFF445E30),
+                    focusedBorderColor =Color(0xFF445E30),
+                    focusedTextColor = Color(0xFC000000),
+                    unfocusedTextColor = Color(0xFC000000)
+                )
             )
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
@@ -92,7 +102,14 @@ fun CalculadoraIMCScreen() {
                 onValueChange = { altura = it },
                 label = { Text("Altura (m)") },
                 leadingIcon = {Icon(Icons.Default.EmojiPeople, contentDescription= null)},
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    unfocusedLabelColor = Color(0xFF333030),
+                    focusedLabelColor = Color(0xFF445E30),
+                    focusedBorderColor =Color(0xFF445E30),
+                    focusedTextColor = Color(0xFC000000),
+                    unfocusedTextColor = Color(0xFC000000)
+                )
             )
             Spacer(modifier = Modifier.height(32.dp))
 
@@ -131,7 +148,9 @@ fun CalculadoraIMCScreen() {
             Text(
                 text = resultado,
                 fontSize = 18.sp,
-                fontWeight = FontWeight.Medium
+                fontWeight = FontWeight.Medium,
+                textAlign = TextAlign.Center,
+                color = Color(0xFF445E30)
             )
         }
     }
